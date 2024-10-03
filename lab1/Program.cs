@@ -388,12 +388,12 @@ internal class Program
                     break;
             }
 
-            Console.WriteLine("\nХотите продолжить работу в программе? (0 - да, 1 - нет)");
+            Console.WriteLine("\nХотите продолжить работу в программе? (1 - да, 0 - нет)");
             Console.Write("Ваш выбор: ");
 
             string continueChoice = Console.ReadLine();
 
-            repeat = (continueChoice.ToLower() != "1");
+            repeat = (continueChoice.ToLower() != "0");
         }
     }
 }
