@@ -34,7 +34,7 @@ internal class Program
 
     public bool is35(int x)
     {
-        return x % 3 == 0 || x % 5 == 0;
+        return !(x % 3 == 0 && x % 5 == 0);
     }
 
     public int max3(int x, int y, int z)
