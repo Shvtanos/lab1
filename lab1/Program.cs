@@ -1,4 +1,4 @@
-﻿internal class Program
+internal class Program
 {
     //задание 1 Методы
     public double fraction(double x)
@@ -125,7 +125,14 @@
 
     public int[] reverseBack(int[] arr)
     {
-        return (int[])arr.Clone();
+        int[] result = new int[arr.Length];
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            result[i] = arr[arr.Length - 1 - i];
+        }
+
+        return result;
     }
 
     public int[] findAll(int[] arr, int x)
@@ -150,6 +157,7 @@
 
         while (repeat)
         {
+            Random random = new Random();
             Console.WriteLine("\nВыберите раздел:");
             Console.WriteLine("   1. Методы");
             Console.WriteLine("   2. Условия");
@@ -185,7 +193,7 @@
                             Console.WriteLine($"Результат: {pr.is2Digits(m3)}"); 
                             break;
                         case 4:
-                            Console.WriteLine("\"Диапазон\" - Проверка на вхождениеи числа в указанный диапазон");
+                            Console.WriteLine("\"Диапазон\" - Проверка на вхождение числа в указанный диапазон");
                             int m4l, m4r, num;
                             Console.WriteLine("Введите левую и правую границы диаапазона и число");
                             m4l = Convert.ToInt32(Console.ReadLine());
@@ -232,7 +240,7 @@
                             Console.WriteLine($"Результат: {pr.max3(y3x, y3y, y3z)}"); 
                             break;
                         case 4:
-                            Console.WriteLine("\"Двойная сумма\" - Возврат суммы чисел (если сумма от 10 до 19 - вернуть\n Введите два числа)");
+                            Console.WriteLine("\"Двойная сумма\" - Возврат суммы чисел (если сумма от 10 до 19 - вернуть 20)\n Введите два числа");
                             int y4a, y4b;
                             y4a = Convert.ToInt32(Console.ReadLine());
                             y4b = Convert.ToInt32(Console.ReadLine());
@@ -268,19 +276,19 @@
                             break;
                         case 3:
                             Console.WriteLine("\"Длина числа\" - Возврат количества знаков в числе\n Введите число");
-                            int c3;
-                            c3 = Convert.ToInt32(Console.ReadLine()); ;
+                            long c3;
+                            c3 = long.Parse(Console.ReadLine()); ;
                             Console.WriteLine($"Результат: {pr.numLen(c3)}"); 
                             break;
                         case 4:
-                            Console.WriteLine("\"Квадрат\" - Вывод квадрата из * размером х\n ВВедите х");
+                            Console.WriteLine("\"Квадрат\" - Вывод квадрата из '*' размерности х\n Введите х");
                             int c4;
                             c4 = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Результат: ");
                             pr.square(c4);
                             break;
                         case 5:
-                            Console.WriteLine("\"Правый треугольник\" - Вывод выравненного по правому краю трегуольника из * размера х\n Введите х");
+                            Console.WriteLine("\"Правый треугольник\" - Вывод выравненного по правому краю трегуольника из '*' высотой х\n Введите х");
                             int c5;
                             c5 = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Результат: "); 
@@ -297,55 +305,78 @@
                     switch (a)
                     {
                         case 1:
-                            Console.WriteLine("\"Поиск первого значения\" - Возврат индекса первого вхождения числа в массив\n Введите x ");
-                            int a1;
-                            a1 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("\"Поиск первого значения\" - Возврат индекса первого вхождения числа в массив ");
                             int[] mas1 = new int[10];
-                            Random random1 = new Random();
-                            mas1[0] = random1.Next(1,10);
-                            Console.WriteLine(mas1);
+                            for (int i = 0; i < 10; i++)
+                            {
+                                mas1[i] = random.Next(1, 11); 
+                            }
+                            Console.WriteLine(string.Join(", ", mas1));
+                            Console.WriteLine("Введите x ");
+                            int a1 = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine($"Результат: {pr.findFirst(mas1, a1)}");
                             break;
+
                         case 2:
-                            Console.WriteLine("\"Поиск максимального\" - Возврат наибольшего по модулую значения массива");
+                            Console.WriteLine("\"Поиск максимального\" - Возврат наибольшего по модулю значения массива");
                             int[] mas2 = new int[10];
-                            Random random2 = new Random();
-                            mas2[0] = random2.Next(1, 10);
-                            Console.WriteLine(mas2);
-                            Console.WriteLine($"Результат: {pr.maxAbs(mas2)}"); 
+                            for (int i = 0; i < 10; i++)
+                            {
+                                mas2[i] = random.Next(-10, 11); 
+                            }
+                            Console.WriteLine(string.Join(", ", mas2));
+                            Console.WriteLine($"Результат: {pr.maxAbs(mas2)}");
                             break;
+
                         case 3:
-                            Console.WriteLine("\"Добавление массива в массив\" - Добавление массива х в массив у с позиции а\nВведите а");
-                            int a3;
-                            a3 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("\"Добавление массива в массив\" - Добавление массива х в массив у с позиции а");
+
                             int[] mas3 = new int[5];
-                            Random random3 = new Random();
-                            mas3[0] = random3.Next(1, 10);
-                            Console.WriteLine(mas3);
+                            for (int i = 0; i < 5; i++)
+                            {
+                                mas3[i] = random.Next(1, 11);
+                            }
+                            Console.WriteLine($"Исходный массив: [{string.Join(", ", mas3)}]");
+
                             int[] mas32 = new int[4];
-                            Random random32 = new Random();
-                            mas32[0] = random32.Next(1, 10);
-                            Console.WriteLine(mas32);
-                            Console.WriteLine($"Результат: {pr.add(mas3,mas32,a3)}");
+                            for (int i = 0; i < 4; i++)
+                            {
+                                mas32[i] = random.Next(1, 11);
+                            }
+                            Console.WriteLine($"Исходный массив: [{string.Join(", ", mas32)}]");
+
+                            Console.WriteLine("Введите позицию a ");
+                            int a3 = Convert.ToInt32(Console.ReadLine());
+                            int[] result = pr.add(mas3, mas32, a3);
+                            Console.WriteLine($"Результат: [{string.Join(", ", result)}]");
                             break;
+
                         case 4:
-                            Console.WriteLine("\"Возвратный реверс\" - Вовзрат массива, в котором значения записаны задом наперед");
+                            Console.WriteLine("\"Возвратный реверс\" - Возврат массива, в котором значения записаны задом наперед");
                             int[] mas4 = new int[10];
-                            Random random4 = new Random();
-                            mas4[0] = random4.Next(1, 10);
-                            Console.WriteLine(mas4);
-                            Console.WriteLine($"Результат: {pr.reverseBack(mas4)}"); 
+                            for (int i = 0; i < 10; i++)
+                            {
+                                mas4[i] = random.Next(1, 11);
+                            }
+                            Console.WriteLine($"Исходный массив: [{string.Join(", ", mas4)}]");
+                            int[] reversed = pr.reverseBack(mas4);
+                            Console.WriteLine($"Результат: [{string.Join(", ", reversed)}]");
                             break;
+
                         case 5:
                             Console.WriteLine("\"Все вхождения\" - Вывод индексов всех вхождений числа х в массив");
-                            int a5;
+
                             int[] mas5 = new int[10];
-                            Random random5 = new Random();
-                            mas5[0] = random5.Next(1, 10);
-                            Console.WriteLine(mas5);
-                            Console.WriteLine("Введите х");
-                            a5 = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine($"Результат: {pr.findAll(mas5,a5)}"); 
+                            for (int i = 0; i < 10; i++)
+                            {
+                                mas5[i] = random.Next(1, 11);
+                            }
+                            Console.WriteLine($"Исходный массив: [{string.Join(", ", mas5)}]");
+
+                            Console.WriteLine("Введите число x ");
+                            int a5 = Convert.ToInt32(Console.ReadLine());
+                            int[] indices = pr.findAll(mas5, a5);
+                            Console.WriteLine($"Результат: Индексы вхождений {a5}: [{string.Join(", ", indices)}]");
                             break;
                         default:
                             Console.WriteLine("Неправильный выбор задачи.");
